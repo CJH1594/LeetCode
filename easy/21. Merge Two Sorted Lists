@@ -1,0 +1,39 @@
+https://leetcode.com/problems/merge-two-sorted-lists/description/
+
+First, It's been a while since I learned about linked lists, so I don't remember well.
+Anyway, a linked list is defined as follows:
+What you only need is a "node". Node is the only thing you will get as input, or output. You should keep in your mind that Node has value and next. So "Next" not only represents the value of the next node, but it refers to the next node itself. Furthermore, the next node will again have its own "next." So Next not only means that next node's value, but all the next node's information.
+**Therefore, a head node is enough for input or output.**
+
+
+```python
+class Solution:
+    def mergeTwoLists(self, list1: Optional[ListNode], list2: Optional[ListNode]) -> Optional[ListNode]:
+
+# The inputs, list1 and list2, are just nodes. Then it becomes a very simple problem. 
+# We can traverse the nodes, comparing values, and store the smaller value.
+# Since our desired output is also a linked list, we need to create new nodes. 
+# Because One new node represents one new linked list.
+
+        node = ListNode(0) #Create new node(linked list)
+        curr = node
+
+
+        while list1 != None and list2 != None: #(comparing values, storing)
+            if list1.val >= list2.val:
+                curr.next = list2
+                list2 = list2.next
+            else:
+                curr.next = list1
+                list1 = list1.next
+            curr = curr.next
+
+        if list1 == None:
+            curr.next = list2
+        else:
+            curr.next = list1
+        
+        return node.next
+
+```
+
