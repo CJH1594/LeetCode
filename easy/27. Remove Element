@@ -1,0 +1,32 @@
+https://leetcode.com/problems/remove-element/description/
+
+My attempt 1
+- Create new_list of nums except for val
+- And then, add any value behind new_list to make same length with nums
+- Problem1: Requiring many memory resoureces
+- Problem2: What is the added value?
+
+My attemp 2
+- Using for loop and slicing
+- for i in range(len(nums)):
+    count = 0
+    if num[i] = val:
+      nums = nums[:i] + nums[i+1:] + [nums[i]]
+      count += 1
+- Problem: If "num[i]" equals "val", then "nums" changes. Therefore, the next index "i" is basically the index "i + 1" before "nums" changes.
+
+Key idea
+- You don't need to do everything simultaneously; simply read through "nums" in order. If a number you just read is different from "val", you can write it as new list.
+- We can utilize a "for loop" and an "index" for this purpose. The "for loop" sequentially reads through "nums", while the "index" writes the appropriate values to "nums", ensuring that every correct value is written in the correct order.
+
+```python
+class Solution:
+    def removeElement(self, nums: List[int], val: int) -> int:
+        index = 0
+        for i in range(len(nums)):
+            if nums[i] != val: # The number is proper
+                nums[index] = nums[i] # Witre proper value at index
+                index += 1 # Prepare to wirte next proper number. Index is the place that next proper number should be written.
+        return index
+
+```
