@@ -1,0 +1,41 @@
+'''python
+class Solution:
+    def letterCombinations(self, digits: str) -> List[str]:
+        if not digits:
+            return []
+            
+        l = []
+        for x in digits:
+            if x == '2':
+                l.append('abc')
+            elif x == '3':
+                l.append('def')
+            elif x == '4':
+                l.append('ghi')
+            elif x == '5':
+                l.append('jkl')
+            elif x == '6':
+                l.append('mno')
+            elif x == '7':
+                l.append('pqrs')
+            elif x == '8':
+                l.append('tuv')
+            elif x == '9':
+                l.append('wxyz')
+
+        
+        
+        result = list(l[0])
+        l = l[1:]
+        for a in l:
+            temp = []
+            for x in result:
+                for y in a:
+                    temp.append(x+y)
+            
+            result = temp
+        
+        return result
+'''
+
+
